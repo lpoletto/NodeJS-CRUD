@@ -2,13 +2,19 @@
  * Toda la logica de negocio de la app
  */
 const productosModels = require('../models/productosModels');
+const categoriaModels = require('../models/categoriasModel');
 
 module.exports = {
     // Retornamos todos los productos
     getAll : async(req, res, next) => {
         try {
             //productosModels.find({condiciones})
-            const  productos = await productosModels.find({});
+            //const  productos = await productosModels.find({}).populate('nombre del campo que quiero relacionar');
+            const  productos = await productosModels.find({}).populate('categoria');
+            
+            // Si queremos buscar por el subdocumento
+            //const  productos = await productosModels.find({"tags.nombre" : "Monitores"}).populate('categoria');
+
             
             // Devolvemos en formato JSON
             res.json(productos);
@@ -25,7 +31,7 @@ module.exports = {
         // con este dato, debería buscarlo en la bbdd
         //console.log(req.params.id);
         try {
-            const producto = await productosModels.findById(req.params.id);
+            const producto = await productosModels.findById(req.params.id).populate('categoria');
     
             res.json(producto);
             
@@ -47,7 +53,9 @@ module.exports = {
                 sku : req.body.sku,
                 descripcion : req.body.descripcion,
                 precio: req.body.precio,
-                cantidad : req.body.cantidad
+                cantidad : req.body.cantidad,
+                categoria : req.body.categoria,
+                tags : req.body.tags
             });
     
             // Almacenamos el producto en la bbdd

@@ -20,12 +20,14 @@ router.post('/', (req, res, next) => {req.app.validateUser(req, res, next)}, pro
 
 /* PUT users listing. */
 // Editar/Atualizar el producto
-router.put('/:id', productoController.update);
+// Para editar un producto el usuario debe estar logueado
+router.put('/:id', (req, res, next) => {req.app.validateUser(req, res, next)}, productoController.update);
 
 
 /* DELETE users listing. */
 // Eliminar de producto
-router.delete('/:id', productoController.delete);
+// Para eliminar un producto el usuario debe estar logueado
+router.delete('/:id', (req, res, next) => {req.app.validateUser(req, res, next)}, productoController.delete);
 
 
 

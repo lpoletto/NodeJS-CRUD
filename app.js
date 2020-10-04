@@ -30,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // NUEVO SERVICIO
 app.use('/productos', productosRouter); 
+
 /**
  *  Si quiero que la ruta completa sea solo accedida solo por usuario autenticados
  * coloco el validateUser en "app.js"
@@ -73,7 +74,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   // Renderiza un html
   //res.render('error');
-  res.json({error : err.message})
+  res.json({error : err.message || 'Ops.. ha ocurrido un error'})
 });
 
 module.exports = app;

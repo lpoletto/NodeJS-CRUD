@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
-    // Registramos un usuario
+    // Registramos un usuario. Es lo mismo que el create de productos
     registro : (req, res, next) => {
         //req.body: es donde recibo toda la info que se va insertar en mi ddbb
         console.log(req.body);

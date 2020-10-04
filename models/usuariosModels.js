@@ -39,7 +39,7 @@ usuariosSchema.path("email").validate( function(value){
 usuariosSchema.path("contraseña").validate( function(value){
     const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}/;
     return regex.test(value);
-}, "La contraseña debe contener al menos 1 número, 1 minuscula, 1 mayuscula, y 6 caracteres");
+}, "La contraseña debe contener al menos 1 número, 1 minúscula, 1 mayúscula, y 6 caracteres");
 
 // Generamos el modelo
 module.exports = mongoose.model("usuarios",usuariosSchema);
