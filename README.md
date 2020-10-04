@@ -13,6 +13,6 @@ Utilizando express + Mongo DB y/o MySql Desarrollar un ecommerce (sin carrito de
 Se debe utilizar JWT para la generación del token
 
 # Para utilizar
-No olvidar ejecutar: *npm install*
+No olvidar ejecutar: *npm install* y *npm install mongoose --save*
 
  
